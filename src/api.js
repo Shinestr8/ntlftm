@@ -7,6 +7,8 @@ const middlewares = require('./middlewares')
 const app = express();
 const router = express.Router();
 
+router.use(middlewares.setCORS);
+
 router.get("/", (req, res) => {
   res.json({
     hello: "hi!"
