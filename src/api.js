@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
   });
 });
 
-app.get('/currentcup',middlewares.setCache(30), async function(req, res){
+router.get('/currentcup',middlewares.setCache(30), async function(req, res){
   console.log("fetching current cup data for scamdiv.tk")
   let options = {
       method: 'GET',
