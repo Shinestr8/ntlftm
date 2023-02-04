@@ -148,8 +148,22 @@ router.get('/lingo', middlewares.setCache(1800), async function(req, res){
         res.json({"name": response.data.displayname});
     } catch(error){
         res.json({message: "error while fetching lingo"})
+    }  
+})
+
+router.get('/hobbit', middlewares.setCache(1800), async function(req, res){
+    let options = {
+        method: 'GET',
+        url: 'https://trackmania.io/api/player/2343ca67-a77c-47c8-83bd-74f99c6f0a37',
+        headers: { 'User-Agent':userAgentHeader}
     }
-    
+    try{
+        let response = await axios.request(options);
+        console.log(response.data.displayname);
+        res.json({"name": response.data.displayname});
+    } catch(error){
+        res.json({message: "error while fetching lingo"})
+    }  
 })
 
 router.get('/currentcup',middlewares.setCache(30), async function(req, res){
